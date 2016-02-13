@@ -13,13 +13,13 @@ export default function configureStore(initialState) {
     rootReducer,
     initialState,
     compose(
-      applyMiddleware(thunk, promiseMiddleware, reduxRouterMiddleware),
+      applyMiddleware(thunk, promiseMiddleware(), reduxRouterMiddleware),
       DevTools.instrument()
     )
   );
 
   // Required for replaying actions from devtools to work
-  reduxRouterMiddleware.listenForReplays(store);
+  // reduxRouterMiddleware.listenForReplays(store);
 
   return store;
 }
